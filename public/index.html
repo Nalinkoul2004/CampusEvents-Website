@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>College Events Hub</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/browser-image-compression@2.0.0/dist/browser-image-compression.min.js"></script> 
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="logo">
+        <h1>RV University<span> Events</span></h1>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="#events">Events</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="theme-toggle">
+        <i class="fas fa-sun"></i>
+        <label class="toggle-switch">
+          <input type="checkbox" id="themeToggle">
+          <span class="toggle-slider"></span>
+        </label>
+        <i class="fas fa-moon"></i>
+        </div>
+        <div class="auth-buttons">
+            <button id="authButton" class="btn btn-primary">Sign In</button>
+        </div>
+      <div class="menu-toggle">
+        <i class="fas fa-bars"></i>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1>Discover Amazing Events at RV University</h1>
+        <p>Stay updated with all the exciting events happening on campus. Register, participate, and make the most of your college experience!</p>
+        <button class="btn btn-primary btn-lg" id="exploreBtn">Explore Events</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="events" class="events-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Upcoming Events</h2>
+        <div class="filter-options">
+          <select id="categoryFilter">
+            <option value="all">All Categories</option>
+            <option value="tech">Technology</option>
+            <option value="cultural">Cultural</option>
+            <option value="sports">Sports</option>
+            <option value="academic">Academic</option>
+          </select>
+          <div class="search-box">
+            <input type="text" id="searchEvents" placeholder="Search events...">
+            <i class="fas fa-search"></i>
+          </div>
+        </div>
+      </div>
+      
+      <div class="events-grid" id="eventsContainer">
+        <!-- Events will be loaded here -->
+        <!-- Example event card with delete button (rendered by JS) -->
+        <!--
+        <div class="event-card" data-event-id="EVENT_ID">
+          ...existing event content...
+          <button class="btn btn-danger delete-event-btn">Delete</button>
+        </div>
+        -->
+      </div>
+      
+      <div class="load-more">
+        <button class="btn btn-outline btn-lg" id="loadMoreBtn">Load More</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="about-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>About Our Events Platform</h2>
+      </div>
+      <div class="about-content">
+        <div class="about-image">
+          <img src="Screenshot 2025-04-15 075400.png" alt="College campus">
+        </div>
+        <div class="about-text">
+          <h3>Your One-Stop Destination for College Events</h3>
+          <p>Our platform connects students with all the exciting events happening around the campus. From technical workshops to cultural festivals, sports tournaments to academic seminars - find everything in one place!</p>
+          <p>We aim to enhance your college experience by making it easier to discover, register, and participate in events that match your interests.</p>
+          <div class="stats">
+            <div class="stat-item">
+              <span class="stat-number">50+</span>
+              <span class="stat-label">Events</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">20,000+</span>
+              <span class="stat-label">Students</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">50+</span>
+              <span class="stat-label">Clubs & Chapters</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Contact Us</h2>
+      </div>
+      <div class="contact-content">
+        <div class="contact-info">
+          <div class="contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <div>
+              <h3>Address</h3>
+              <p>Near Pattengere Metro Station Pattengere Main road Bangaluru, 560098</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <div>
+              <h3>Email</h3>
+              <p>admissions@rvu.edu.in</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-phone"></i>
+            <div>
+              <h3>Phone</h3>
+              <p>+91 8951179896</p>
+            </div>
+          </div>
+          <div class="social-links">
+            <a target="_blank" href="https://www.facebook.com/RV.University1/" class="social-link"><i class="fab fa-facebook-f"></i></a>
+            <a target="_blank" href="https://github.com/RVU-Bsc-2022-Course-Assigments" class="social-link"><i class="fab fa-github"></i></a>
+            <a target="_blank" href="https://www.instagram.com/rv.university/?hl=en" class="social-link"><i class="fab fa-instagram"></i></a>
+            <a target="_blank" href="https://www.linkedin.com/school/rv-university/?originalSubdomain=in" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="contact-form">
+          <h3>Send us a message</h3>
+          <form id="contactForm">
+            <div class="form-group">
+              <input type="text" id="name" name="name" placeholder="Your Name" required>
+              <span class="error-message" id="nameError"></span>
+            </div>
+            <div class="form-group">
+              <input type="email" id="email" name="email" placeholder="Your Email" required>
+              <span class="error-message" id="emailError"></span>
+            </div>
+            <div class="form-group">
+              <input type="text" id="subject" name="subject" placeholder="Subject" required>
+              <span class="error-message" id="subjectError"></span>
+            </div>
+            <div class="form-group">
+              <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+              <span class="error-message" id="messageError"></span>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Send Message</button>
+          </form>
+          <div id="contactStatus" style="margin-top:10px;"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <h2>Campus<span>Events</span></h2>
+          <p>Your one-stop destination for all college events.</p>
+        </div>
+        <div class="footer-links">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#events">Events</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h3>Resources</h3>
+          <ul>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Support</a></li>
+          </ul>
+        </div>
+        <div class="footer-newsletter">
+          <h3>List Your Event</h3>
+          <p>Want to showcase your event on our platform?</p>
+          <button id="createEventBtn" class="btn btn-primary">Create Event</button>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 CampusEvents. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="modal" id="createEventModal">
+    <div class="modal-content modal-lg">
+      <span class="close-modal" onclick="closeModal('createEventModal')">&times;</span>
+      <h2>Create New Event</h2>
+      <form id="createEventForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="eventTitle">Event Title</label>
+            <input type="text" id="eventTitle" name="title" required>
+            <span class="error-message" id="eventTitleError"></span>
+          </div>
+          <!-- Add Organizer Name Field -->
+          <div class="form-group">
+            <label for="organizerName">Organizer Name</label>
+            <input type="text" id="organizerName" name="organizerName" required>
+            <span class="error-message" id="organizerNameError"></span>
+          </div>
+          <div class="form-group">
+            <label for="eventCategory">Category</label>
+            <select id="eventCategory" name="category" required>
+              <option value="">Select Category</option>
+              <option value="tech">Technology</option>
+              <option value="cultural">Cultural</option>
+              <option value="sports">Sports</option>
+              <option value="academic">Academic</option>
+            </select>
+            <span class="error-message" id="eventCategoryError"></span>
+          </div>
+        </div>
+        <!-- Update Date Fields -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="startDate">Start Date</label>
+            <input type="date" id="startDate" name="startDate" required>
+            <span class="error-message" id="startDateError"></span>
+          </div>
+          <div class="form-group">
+            <label for="endDate">End Date</label>
+            <input type="date" id="endDate" name="endDate" required>
+            <span class="error-message" id="endDateError"></span>
+          </div>
+        </div>
+
+        <!-- Update Time Fields -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="startTime">Start Time</label>
+            <input type="time" id="startTime" name="startTime" required>
+            <span class="error-message" id="startTimeError"></span>
+          </div>
+          <div class="form-group">
+            <label for="endTime">End Time</label>
+            <input type="time" id="endTime" name="endTime" required>
+            <span class="error-message" id="endTimeError"></span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="eventVenue">Venue</label>
+          <input type="text" id="eventVenue" name="venue" required>
+          <span class="error-message" id="eventVenueError"></span>
+        </div>
+        <div class="form-group">
+            <label for="eventImage">Event Image</label>
+            <input type="file" 
+                id="eventImage" 
+                name="image" 
+                accept="image/*" 
+                required>
+            <span class="error-message" id="eventImageError"></span>
+        </div>
+        <div class="form-group">
+          <label for="eventDescription">Description</label>
+          <textarea id="eventDescription" name="description" rows="4" required></textarea>
+          <span class="error-message" id="eventDescriptionError"></span>
+        </div>
+        <div class="form-group">
+          <label for="eventCapacity">Maximum Capacity</label>
+          <input type="number" id="eventCapacity" name="capacity" min="1" required>
+          <span class="error-message" id="eventCapacityError"></span>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary btn-block">Create Event</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Registration Confirmation Modal -->
+  <div id="registerConfirmModal" class="modal">
+    <div class="modal-content">
+        <h2>Confirm Registration</h2>
+        <p>Are you sure you want to register for this event?</p>
+        <div class="modal-actions">
+            <button id="confirmRegisterBtn" class="btn btn-primary">Yes</button>
+            <button onclick="closeModal('registerConfirmModal')" class="btn btn-outline">No</button>
+        </div>
+    </div>
+  </div>
+
+
+  <!-- Registered Users Modal -->
+  <div id="registeredUsersModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeModal('registeredUsersModal')">&times;</span>
+        <h2>Registered Users</h2>
+        <ul id="registeredUsersList" class="user-list"></ul>
+    </div>
+  </div>
+
+
+  
+  <div class="toast" id="toast">
+    <div class="toast-content">
+      <i class="fas fa-check-circle toast-icon success"></i>
+      <div class="toast-message">Success message here</div>
+    </div>
+    <div class="toast-progress"></div>
+  </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>   
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-storage-compat.js"></script>
+    <script type="module" src="script.js"></script>
+    <script>
+      // Wait for DOM to be ready
+      document.addEventListener('DOMContentLoaded', function() {
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        const sunIcon = document.querySelector('.theme-toggle .fa-sun');
+        const moonIcon = document.querySelector('.theme-toggle .fa-moon');
+
+        // Set initial theme
+        if (localStorage.getItem('theme') === 'dark') {
+          body.classList.add('dark-mode');
+          themeToggle.checked = true;
+          sunIcon.style.opacity = 0.5;
+          moonIcon.style.opacity = 1;
+        } else {
+          body.classList.remove('dark-mode');
+          themeToggle.checked = false;
+          sunIcon.style.opacity = 1;
+          moonIcon.style.opacity = 0.5;
+        }
+
+        // Toggle theme on switch
+        function setTheme(isDark) {
+          if (isDark) {
+            body.classList.add('dark-mode');
+            localStorage.setItem('theme', 'dark');
+            sunIcon.style.opacity = 0.5;
+            moonIcon.style.opacity = 1;
+            themeToggle.checked = true;
+          } else {
+            body.classList.remove('dark-mode');
+            localStorage.setItem('theme', 'light');
+            sunIcon.style.opacity = 1;
+            moonIcon.style.opacity = 0.5;
+            themeToggle.checked = false;
+          }
+        }
+
+        themeToggle.addEventListener('change', function() {
+          setTheme(this.checked);
+        });
+
+        // Add click listeners to icons for toggling theme
+        sunIcon.addEventListener('click', function() {
+          setTheme(false);
+        });
+        moonIcon.addEventListener('click', function() {
+          setTheme(true);
+        });
+
+        // Explore Events Button
+        document.getElementById('exploreBtn').addEventListener('click', function() {
+          document.getElementById('events').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Load More Button
+        document.getElementById('loadMoreBtn').addEventListener('click', function() {
+          if (typeof loadMoreEvents === 'function') {
+            loadMoreEvents();
+          } else {
+            // fallback: scroll to bottom of events
+            document.getElementById('eventsContainer').scrollIntoView({ behavior: 'smooth', block: 'end' });
+          }
+        });
+
+        // Contact form handler
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+          contactForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const statusDiv = document.getElementById('contactStatus');
+            statusDiv.textContent = '';
+            const formData = {
+              name: document.getElementById('name').value,
+              email: document.getElementById('email').value,
+              subject: document.getElementById('subject').value,
+              message: document.getElementById('message').value
+            };
+            try {
+              // Use your actual Formspree form ID below!
+              const res = await fetch('https://formspree.io/f/xrbqlzal', { // <-- replace with your real ID
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData)
+              });
+              if (res.ok) {
+                statusDiv.style.color = 'green';
+                statusDiv.textContent = 'Message sent successfully!';
+                contactForm.reset();
+              } else {
+                statusDiv.style.color = 'red';
+                statusDiv.textContent = 'Failed to send message. Please try again.';
+              }
+            } catch (err) {
+              statusDiv.style.color = 'red';
+              statusDiv.textContent = 'Error sending message.';
+            }
+          });
+        }
+
+        // Debug: Log form data and errors on submit
+        const createEventForm = document.getElementById('createEventForm');
+        if (createEventForm) {
+          createEventForm.addEventListener('submit', async function(e) {
+            e.preventDefault(); // Prevent default form submission
+            // Log all form field values for debugging
+            const formData = new FormData(createEventForm);
+            const entries = {};
+            for (const [key, value] of formData.entries()) {
+              entries[key] = value;
+            }
+            console.log('Create Event Form Data:', entries);
+
+            // Check if image is selected
+            const imageInput = document.getElementById('eventImage');
+            if (!imageInput.files || imageInput.files.length === 0) {
+              console.error('No image selected');
+              document.getElementById('eventImageError').textContent = 'Please select an image.';
+              return;
+            } else {
+              document.getElementById('eventImageError').textContent = '';
+              console.log('Image file selected:', imageInput.files[0]);
+            }
+
+            // Disable submit button to prevent double submission
+            const submitBtn = createEventForm.querySelector('button[type="submit"]');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Creating...';
+
+            // Try to call the event creation logic (assumes script.js exports createEvent)
+            try {
+              // If you use a custom API endpoint, replace the below with your actual logic
+              // Example for Firebase or REST API:
+              // await createEvent(entries, imageInput.files[0]);
+              // For demo, just simulate success:
+              // throw new Error('Simulated error'); // Uncomment to simulate error
+
+              // If script.js handles the actual submission, remove this block.
+              // Otherwise, you can POST to your backend here:
+              /*
+              const response = await fetch('/api/events', {
+                method: 'POST',
+                body: formData
+              });
+              if (!response.ok) throw new Error('Failed to create event');
+              */
+
+              // If using Firebase, call your Firebase function here.
+
+              // Simulate success for now:
+              alert('Event created successfully!');
+              createEventForm.reset();
+              // Optionally close modal
+              // closeModal('createEventModal');
+            } catch (err) {
+              console.error('Error creating event:', err);
+              // Show error message to user
+              let errorDiv = document.getElementById('eventTitleError');
+              if (errorDiv) errorDiv.textContent = 'Error creating event. Please check all fields and try again.';
+              alert('Error creating event. Check console for details.');
+            } finally {
+              submitBtn.disabled = false;
+              submitBtn.textContent = 'Create Event';
+            }
+          });
+        }
+      });
+
+      // Add this after your DOMContentLoaded handler
+      function addDeleteEventListeners() {
+        document.querySelectorAll('.delete-event-btn').forEach(btn => {
+          btn.onclick = async function() {
+            const card = btn.closest('.event-card');
+            const eventId = card.getAttribute('data-event-id');
+            if (confirm('Are you sure you want to delete this event?')) {
+              try {
+                const res = await fetch(`/api/events/${eventId}`, { method: 'DELETE' });
+                if (res.ok) {
+                  card.remove();
+                  alert('Event deleted.');
+                } else {
+                  alert('Failed to delete event.');
+                }
+              } catch (e) {
+                alert('Error deleting event.');
+              }
+            }
+          };
+        });
+      }
+
+      // Call addDeleteEventListeners() after events are loaded/rendered
+      // For example, after rendering events in JS:
+      // addDeleteEventListeners();
+
+      // Example: Render events with delete button
+      function renderEvents(events) {
+        const eventsContainer = document.getElementById('eventsContainer');
+        eventsContainer.innerHTML = '';
+        events.forEach(event => {
+          const card = document.createElement('div');
+          card.className = 'event-card';
+          card.setAttribute('data-event-id', event.id);
+          card.innerHTML = `
+            <h3>${event.title}</h3>
+            <p>${event.description}</p>
+            <!-- Add other event details here -->
+            <button class="btn btn-danger delete-event-btn">Delete</button>
+          `;
+          eventsContainer.appendChild(card);
+        });
+        addDeleteEventListeners();
+      }
+
+      // Example usage: after fetching events from backend
+      // fetch('/api/events')
+      //   .then(res => res.json())
+      //   .then(events => renderEvents(events));
+
+    </script>
+  </body>
+</html>
+
