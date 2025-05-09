@@ -6,6 +6,12 @@ on:
   pull_request:
     branches: [ main ]
 
+permissions:
+  contents: write
+  packages: write
+  pull-requests: write
+  security-events: write
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -31,15 +37,15 @@ jobs:
 
     - name: Login to Docker Hub
       uses: docker/login-action@v3
-      if: github.ref == 'refs/heads/main'
+      if: github.event_name != 'pull_request'
       with:
         username: nalinkoul123
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
     - name: Build and push Docker image
       uses: docker/build-push-action@v5
-      if: github.ref == 'refs/heads/main'
+      if: github.event_name != 'pull_request'
       with:
         context: .
-        push: true
+        push: ${{ github.event_name != 'pull_request' }}
         tags: nalinkoul123/campus-events:latest
