@@ -48,3 +48,4 @@ jobs:
         context: .
         push: true
         tags: Nalinkoul2004/campus-events:latest
+        no-cache: true
