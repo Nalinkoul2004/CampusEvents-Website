@@ -1,4 +1,4 @@
-FROM node:18-alpine
+FROM node:18.20.2-alpine
 
 WORKDIR /app
 
@@ -6,7 +6,7 @@ WORKDIR /app
 COPY package*.json ./
 
 # Use npm ci if lock file exists, fallback to npm install
-RUN if [ -f package-lock.json ]; then npm ci; else npm install; fi
+RUN npm ci --omit=dev || npm install --omit=dev
 
 COPY . .
 
