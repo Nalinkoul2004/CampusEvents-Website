@@ -47,5 +47,5 @@ jobs:
       with:
         context: .
         push: true
-        tags: nalinkoul123/campus-events:latest
+        tags: nalinkoul123/campus-events-website:latest
         no-cache: true
